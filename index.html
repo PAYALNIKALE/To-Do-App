@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do App/ Task Manager Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>✨ Task Manager</h1>
+
+  <!-- FORM -->
+  <div class="form">
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="text" id="task" placeholder="Task">
+    <input type="time" id="time">
+    <input type="text" id="address" placeholder="Address">
+    <button onclick="addTask()">Add Task</button>
+  </div>
+
+  <!-- SEARCH + FILTER -->
+  <div class="top-bar">
+    <input 
+      type="text" 
+      id="search" 
+      placeholder="Search by name or task..." 
+      onkeyup="applySearchAndFilter()"
+    >
+    
+    <select id="statusFilter" onchange="applySearchAndFilter()">
+      <option value="all">All Tasks</option>
+      <option value="completed">Completed</option>
+      <option value="pending">Pending</option>
+    </select>
+
+    <button onclick="applySearchAndFilter()">Apply</button>
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No</th>
+        <th>Full Name</th>
+        <th>Task</th>
+        <th>Time</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="taskTable">
+      <!-- Dynamic Data -->
+    </tbody>
+  </table>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+    <button onclick="prevPage()">⬅ Prev</button>
+    <span id="pageInfo"></span>
+    <button onclick="nextPage()">Next ➡</button>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h3>Edit Task</h3>
+    <input type="text" id="editTaskInput" placeholder="Update task">
+    
+    <div class="modal-buttons">
+      <button onclick="saveEdit()">Save</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
